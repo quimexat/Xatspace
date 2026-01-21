@@ -293,16 +293,16 @@
 
         .moth-container {
             position: absolute;
-            top: 50%;
+            top: 28%; /* AJUSTADO: Movido arriba del texto (antes 50%) */
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 60vh;
-            height: 60vh;
+            width: 50vh; /* AJUSTADO: Reducido ligeramente para encajar mejor arriba */
+            height: 50vh;
             z-index: 1; /* Detras del texto (que es 2) */
             /* Quitar el drop-shadow del contenedor para aplicarlo a la imagen invertida */
             animation: float 6s ease-in-out infinite;
             pointer-events: none; 
-            opacity: 0.5; /* Opacidad reducida para que no moleste al texto */
+            opacity: 0.8; /* Opacidad mejorada para visibilidad */
         }
 
         /* --- ARREGLO DE MARIPOSA NEGRA --- */
@@ -956,14 +956,14 @@ Pero cada historia tiene su final.</p>
         <div class="card reveal">
             <div class="card-icon">2</div>
             <h3>Acuario</h3>
-            <p>26/01/2026</p>
+            <p>26/01/2000.</p>
         </div>
 
         <!-- Card 3 -->
         <div class="card reveal">
             <div class="card-icon">3</div>
             <h3>País</h3>
-            <p>Argentina</p>
+            <p>Argentina.</p>
         </div>
     </section>
 
