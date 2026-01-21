@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QUIMERA | Gothic Digital Experience</title>
     
-    <!-- Google Fonts (Solo para Cinzel, la gótica es local) -->
+    <!-- Google Fonts (Solo para Cinzel y UnifrakturCook) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- FUENTE LOCAL --- */
+        /* --- FUENTE LOCAL: Wolfhagen (SOLO PARA HEADLINE) --- */
         @font-face {
             font-family: 'Wolfhagen';
             src: url('Wolfhagen.ttf') format('truetype');
@@ -31,8 +31,11 @@
             --accent-purple: #4a0072; /* Púrpura */
             --accent-glow: #c41e3a; /* Carmesí */
             --accent-warm: #5c000f;
-            --font-gothic: 'Wolfhagen', 'UnifrakturCook', cursive;
+            
+            /* Fuente General para títulos secundarios (NO Wolfhagen) */
+            --font-gothic: 'UnifrakturCook', cursive; 
             --font-serif: 'Cinzel Decorative', serif;
+            
             --glow-strong: 0 0 20px rgba(150, 0, 24, 0.6), 0 0 40px rgba(74, 0, 114, 0.4);
             --glow-soft: 0 0 10px rgba(196, 30, 58, 0.2);
             --border-color: rgba(150, 0, 24, 0.3);
@@ -72,7 +75,7 @@
         }
 
         .loader-text {
-            font-family: var(--font-gothic);
+            font-family: 'UnifrakturCook', cursive; /* CAMBIO: Usa UnifrakturCook, no Wolfhagen */
             font-size: 3rem;
             color: var(--accent-pink);
             text-shadow: 0 0 15px var(--accent-glow);
@@ -214,14 +217,17 @@
         }
 
         /* --- TYPOGRAPHY --- */
+        /* Configuración general para h2 y h3 usa la fuente gótica secundaria */
         h1, h2, h3 {
-            font-family: var(--font-gothic);
+            font-family: var(--font-gothic); 
             font-weight: 700;
             letter-spacing: 2px;
             line-height: 1.2;
         }
 
+        /* --- HEADLINE QUIMERA (USO EXCLUSIVO DE WOLFHAGEN) --- */
         .gothic-title {
+            font-family: 'Wolfhagen', sans-serif !important; /* FORZAR WOLFHAGEN AQUI */
             font-size: clamp(4rem, 15vw, 12rem); 
             text-transform: capitalize;
             color: transparent;
@@ -292,29 +298,32 @@
             transform: translate(-50%, -50%);
             width: 60vh;
             height: 60vh;
-            z-index: 1;
-            filter: drop-shadow(0 0 30px rgba(74, 0, 114, 0.3));
+            z-index: 1; /* Detras del texto (que es 2) */
+            /* Quitar el drop-shadow del contenedor para aplicarlo a la imagen invertida */
             animation: float 6s ease-in-out infinite;
             pointer-events: none; 
-            opacity: 0.9;
+            opacity: 0.5; /* Opacidad reducida para que no moleste al texto */
         }
 
+        /* --- ARREGLO DE MARIPOSA NEGRA --- */
         .moth-img {
             width: 100%;
             height: 100%;
             object-fit: contain;
             animation: pulseGlowImg 4s infinite alternate;
-            filter: drop-shadow(0 0 10px var(--accent-purple));
+            /* INVERTIR COLORES: Vuelve blanco lo negro para que se vea en fondo oscuro */
+            filter: invert(1) drop-shadow(0 0 15px var(--accent-pink)); 
         }
 
         @keyframes pulseGlowImg {
             0% { 
-                filter: drop-shadow(0 0 5px var(--accent-purple)) brightness(0.8) sepia(100%) hue-rotate(260deg); 
                 transform: scale(0.98);
+                opacity: 0.8;
             }
             100% { 
-                filter: drop-shadow(0 0 30px var(--accent-pink)) brightness(1.3) sepia(0%) hue-rotate(340deg);
                 transform: scale(1.02);
+                opacity: 1;
+                filter: invert(1) drop-shadow(0 0 25px var(--accent-glow));
             }
         }
 
